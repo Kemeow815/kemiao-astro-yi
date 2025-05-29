@@ -36,7 +36,7 @@ export const site = {
   postPageSize: 10,
   feedPageSize: 20,
   beian: '',
-  asideTagsMaxSize: 0,
+  asideTagsMaxSize: 10,
 }
 
 /**
@@ -132,14 +132,19 @@ export const infoLinks = [
     outlink: 'https://twitter.com/kemiaosw',
   },
   {
-    icon: 'ri-instagram-fill',
-    name: 'instagram',
-    outlink: '',
+    icon: 'ri-qq-line',
+    name: 'QQ',
+    outlink: 'https://qm.qq.com/q/m8FW8Y6TkY',
   },
   {
     icon: 'ri-github-fill',
     name: 'github',
     outlink: 'https://github.com/Kemeow815',
+  },
+  {
+    icon: 'ri-home-3-line',
+    name: 'homepage',
+    outlink: 'https://www.kemiao.online',
   },
   {
     icon: 'ri-rss-fill',
