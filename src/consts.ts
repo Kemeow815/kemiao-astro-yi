@@ -23,14 +23,14 @@ import type {AnalyticsConfig} from "./types/analyticsTypes"
  *    All tags will be displayed in single page "/tags".
  */
 export const site = {
-  title: 'Astro Theme Yi', // required
+  title: '喵落阁', // required
   favicon: '/favicon.svg', // required
-  description: 'Welcome to my independent blog website! ',
-  author: "Astro-Yi", // required
-  avatar: '/avatar.png', // required
-  url: 'https://astro-yi-nu.vercel.app', // required
+  description: '欢迎来到克喵的博客！',
+  author: "克喵爱吃卤面", // required
+  avatar: '/kemiao.jpg', // required
+  url: 'https://blog-v4.kemeow.top', // required
   baseUrl: '', // When using GitHubPages, you must enter the repository name startWith '/'. e.g. '/astro-blog'
-  motto: 'Actions speak louder than words.',
+  motto: '愿你看清一切真相后，依旧热爱你的家人和朋友。',
   recentBlogSize: 5,
   archivePageSize: 25,
   postPageSize: 10,
@@ -49,12 +49,12 @@ export const site = {
  * memosPageSize {number} 10
  */
 export const config = {
-  lang: 'en', // en | zh-cn | zh-Hant | cs
+  lang: 'zh-cn', // en | zh-cn | zh-Hant | cs
   codeFoldingStartLines: 16, // Need to re-run the project to take effect
 
   // memos config
-  memosUrl: '', // https://xxxx.xxx.xx
-  memosUsername: '', // login name
+  memosUrl: 'https://s.dusays.com', // https://xxxx.xxx.xx
+  memosUsername: 'kemiao', // login name
   memosPageSize: 10, // number
 }
 
@@ -67,47 +67,48 @@ export const config = {
  */
 export const categories = [
   {
-    name: "Blog",
+    name: "文章",
     iconClass: "ri-draft-line",
     href: "/blog/1",
   },
   {
-    name: "Feed",
+    name: "动态",
     iconClass: "ri-lightbulb-flash-line",
     href: "/feed/1",
   },
-  // {
-  //   name: "Memos",
-  //   iconClass: "ri-quill-pen-line",
-  //   href: "/memos",
-  // },
   {
-    name: "Archive",
+    name: "随记",
+    iconClass: "ri-quill-pen-line",
+    href: "https://shuoshuo.kemiao.online",
+    target: '_blank',
+  },
+  {
+    name: "归档",
     iconClass: "ri-archive-line",
     href: "/archive/1",
   },
   {
-    name: "Message",
+    name: "留言",
     iconClass: "ri-chat-1-line",
     href: "/message",
   },
   {
-    name: "Search",
+    name: "搜索",
     iconClass: "ri-search-line",
     href: "/search",
   },
   {
-    name: "More",
+    name: "更多",
     iconClass: "ri-more-fill",
     href: "javascript:void(0);",
     children: [
       {
-        name: 'About',
+        name: '关于',
         iconClass: 'ri-information-line',
         href: '/about',
       },
       {
-        name: 'Friends',
+        name: '友链',
         iconClass: 'ri-user-5-line',
         href: '/friends',
         target: '_self',
@@ -123,12 +124,12 @@ export const infoLinks = [
   {
     icon: 'ri-telegram-fill',
     name: 'telegram',
-    outlink: '',
+    outlink: 'https://t.me/KemiaoJun',
   },
   {
     icon: 'ri-twitter-fill',
     name: 'twitter',
-    outlink: '',
+    outlink: 'https://twitter.com/kemiaosw',
   },
   {
     icon: 'ri-instagram-fill',
@@ -138,12 +139,12 @@ export const infoLinks = [
   {
     icon: 'ri-github-fill',
     name: 'github',
-    outlink: 'https://github.com/cirry/astro-yi',
+    outlink: 'https://github.com/Kemeow815',
   },
   {
     icon: 'ri-rss-fill',
     name: 'rss',
-    outlink: '',
+    outlink: '/rss.xml',
   }
 ]
 
@@ -156,11 +157,11 @@ export const infoLinks = [
  * paypalUrl {string}
  */
 export const donate = {
-  enable: false,
+  enable: true,
   tip: "Thanks for the coffee !!!☕",
-  wechatQRCode: "/WeChatQR.png",
-  alipayQRCode: "/AliPayQR.png",
-  paypalUrl: "https://paypal.me/xxxxxxxxxx",
+  wechatQRCode: "https://cdn.jsdelivr.net/gh/kmfx/tuchuang@main/img/202505050804813.jpg",
+  alipayQRCode: "https://cdn.jsdelivr.net/gh/kmfx/tuchuang@main/img/202505050804592.jpg",
+  paypalUrl: "https://www.paypal.com/paypalme/kemiaofx?locale.x=zh_XC",
 }
 
 /**
@@ -172,12 +173,12 @@ export const donate = {
  */
 export const friendshipLinks =
   [
-    // {
-    //   name: "Cirry's Blog",
-    //   url: 'https://cirry.cn',
-    //   avatar: "https://cirry.cn/avatar.png",
-    //   description: '前端开发的日常'
-    // },
+    {
+      name: "wallleap",
+      url: 'https://myblog.wallleap.cn',
+      avatar: "https:/gravatar.wallleap.cn/avatar/be1ccdcf025a92b98a92e331e1b3662a?size=256",
+      description: 'Luwang\'s blog'
+    },
   ]
 
 /**
@@ -195,7 +196,7 @@ export const friendshipLinks =
  * walineConfig.whiteList {string[]} set some pages not to display reaction
  */
 export const comment = {
-  enable: false,
+  enable: true,
   type: 'giscus', // waline | giscus,
   walineConfig: {
     serverUrl: "",
@@ -211,18 +212,18 @@ export const comment = {
 
   // giscus config
   giscusConfig: {
-    'data-repo': "",
-    'data-repo-id': "",
-    'data-category': "",
-    'data-category-id': "",
-    'data-mapping': "",
-    'data-strict': "",
-    'data-reactions-enabled': "",
-    'data-emit-metadata': "",
-    'data-input-position': "",
-    'data-theme': "",
-    'data-lang': "",
-    'crossorigin': "",
+    'data-repo': "Kemeow815/kemiao-astro-yi",
+    'data-repo-id': "R_kgDOOyXy1Q",
+    'data-category': "Announcements",
+    'data-category-id': "DIC_kwDOOyXy1c4CqueW",
+    'data-mapping': "title",
+    'data-strict': "0",
+    'data-reactions-enabled': "1",
+    'data-emit-metadata': "0",
+    'data-input-position': "top",
+    'data-theme': "preferred_color_scheme",
+    'data-lang': "zh-CN",
+    'crossorigin': "anonymous",
   }
 
   //
@@ -235,7 +236,7 @@ export const comment = {
  * It defines and exports the default settings for Umami and Google Analytics.
  */
 export const analytics: AnalyticsConfig = {
-  enable: false,
+  enable: true,
   umamiConfig: {
     enable: false,
     id: "",
@@ -245,5 +246,5 @@ export const analytics: AnalyticsConfig = {
     enable: false,
     id: ""
   },
-  busuanzi: false,
+  busuanzi: true,
 };
