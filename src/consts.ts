@@ -28,7 +28,7 @@ export const site = {
   description: '欢迎来到克喵的博客！',
   author: "克喵爱吃卤面", // required
   avatar: '/kemiao.jpg', // required
-  url: 'https://blog-v4.kemeow.top', // required
+  url: 'https://blog-v6.kemeow.top', // required
   baseUrl: '', // When using GitHubPages, you must enter the repository name startWith '/'. e.g. '/astro-blog'
   motto: '愿你看清一切真相后，依旧热爱你的家人和朋友。',
   recentBlogSize: 5,
