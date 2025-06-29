@@ -79,7 +79,13 @@ export const categories = [
   {
     name: "随记",
     iconClass: "ri-quill-pen-line",
-    href: "https://shuoshuo.kemiao.online",
+    href: "https://pyq.kemiao.online",
+    target: '_blank',
+  },
+  {
+    name: "相册",
+    iconClass: "ri-image-fill",
+    href: "https://photos.050815.xyz",
     target: '_blank',
   },
   {
