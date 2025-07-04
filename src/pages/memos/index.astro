@@ -22,60 +22,68 @@ import {t} from '@/i18n/utils'
     getMemos()
   })
 
-  let avatar_url = ''
-  let name = ''
-  let nextPageToken = ''
-  await getAvatar()
+  // 旧版无法通过API获取用户信息，直接从配置中获取
+  let avatar_url = config.memosAvatar || 'https://memos.cirry.cn/full-logo.webp'
+  let name = config.memosName || config.memosUsername
+  let offset = 0
+  const PAGE_SIZE = 10
+
+  // 首次加载
   await getMemos()
 
-  // 获取头像
-  async function getAvatar() {
-    let res = await fetch(`${config.memosUrl}/api/v1/users:username?username=${config.memosUsername}`)
-    let userInfo = await res.json()
-    avatar_url = userInfo.avatarUrl ? userInfo.avatarUrl : 'https://memos.cirry.cn/full-logo.webp'
-    name = userInfo.name
-  }
-
   async function getMemos() {
-    // 创建URL对象，包含API的路径
-    const url = new URL(`${config.memosUrl}/api/v1/memos`);
+    // 旧版API端点：/api/v1/memo
+    const url = new URL(`${config.memosUrl}/api/v1/memo`);
     const params = new URLSearchParams({
-      filter: 'visibility == "PUBLIC"',
-      pageSize: "10",
-      pageToken: nextPageToken,
+      creatorId: config.memosCreatorId || "1", // 默认用户ID为1
+      rowStatus: "NORMAL",
+      limit: PAGE_SIZE.toString(),
+      offset: offset.toString()
     });
-    // 将查询参数对象与URL对象结合
     url.search = params.toString();
+
     let res = await fetch(url.toString())
-    let json = await res.json()
+    let memosData = await res.json()  // 旧版直接返回数组
 
     let divs = ''
 
-    json.memos.forEach(memo => {
+    memosData.forEach(memo => {
+      // 资源字段在旧版中是resourceList
+      const resources = memo.resourceList || []
       let imagesStr = ''
-      if (memo.resources.length > 0) {
-        let images = memo.resources.filter(source => ["image/jpeg", "image/png", "image/jpg", "image/webp"].includes(source.type))
+
+      if (resources.length > 0) {
+        // 过滤出图片类型
+        const images = resources.filter(
+          source => ["image/jpeg", "image/png", "image/jpg", "image/webp"]
+            .includes(source.type)
+        )
         images.forEach(image => {
-          imagesStr += `<img src="${config.memosUrl + '/file/' + image.name + '/' + image.filename}" alt="${image.filename}" />`
+          // 旧版资源路径：/o/r/{resource_id}/{publicId或filename}
+          const fileId = image.publicId || image.filename
+          imagesStr += `<img src="${config.memosUrl}/o/r/${image.id}/${fileId}" alt="${image.filename}" />`
         })
       }
+
+      // 旧版时间字段为createdTs，是秒级时间戳，需要乘以1000
+      const memoTime = memo.createdTs * 1000
       divs += `
-          <div class="flex flex-col  shadow flex flex-col bg-skin-card p-4 mb-4 rounded-lg">
-            <div class="flex w-full memos-center">
-              <img src="${avatar_url}" class="github-avatar mr-4" alt="avatar" />
-              <div>@${config.memosUsername}</div>
-            </div>
-            <p class="memo-content-wrapper my-4"> ${memo.snippet}</p>
-            <div>${imagesStr}</div>
-
-            <p>${dayjs(memo.updateTime).fromNow()} • ${dayjs(memo.updateTime).format("YYYY-MM-DD HH:mm")}</p>
+        <div class="flex flex-col shadow bg-skin-card p-4 mb-4 rounded-lg">
+          <div class="flex w-full memos-center">
+            <img src="${avatar_url}" class="github-avatar mr-4" alt="avatar" />
+            <div>@${config.memosUsername}</div>
           </div>
-          `
+          <p class="memo-content-wrapper my-4">${memo.content}</p>
+          <div>${imagesStr}</div>
+          <p>${dayjs(memoTime).fromNow()} • ${dayjs(memoTime).format("YYYY-MM-DD HH:mm")}</p>
+        </div>`
     })
-    document.getElementById('memos').innerHTML += divs.toString();
-    nextPageToken = json['nextPageToken']
 
-    if (nextPageToken === '') {
+    document.getElementById('memos').innerHTML += divs;
+    offset += memosData.length  // 增加偏移量
+
+    // 判断是否还有更多数据
+    if (memosData.length < PAGE_SIZE) {
       moreBtn.classList.add('hidden');
     } else {
       moreBtn.classList.remove('hidden');

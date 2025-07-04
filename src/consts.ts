@@ -28,7 +28,7 @@ export const site = {
   description: '欢迎来到克喵的博客！',
   author: "克喵爱吃卤面", // required
   avatar: '/kemiao.jpg', // required
-  url: 'https://blog-v6.kemeow.top', // required
+  url: 'https://boke.kemeow.top', // required
   baseUrl: '', // When using GitHubPages, you must enter the repository name startWith '/'. e.g. '/astro-blog'
   motto: '愿你看清一切真相后，依旧热爱你的家人和朋友。',
   recentBlogSize: 5,
@@ -53,8 +53,11 @@ export const config = {
   codeFoldingStartLines: 16, // Need to re-run the project to take effect
 
   // memos config
-  memosUrl: 'https://s.dusays.com', // https://xxxx.xxx.xx
-  memosUsername: 'kemiao', // login name
+  memosUrl: 'https://memos.050815.xyz', // https://xxxx.xxx.xx
+  memosUsername: '克喵爱吃卤面', // login name
+  memosCreatorId: '1',
+  memosAvatar: 'https://cn.cravatar.com/avatar/1F6C8947D35A8186A1647009BA8BC5F2?size=256',
+  memosName: '克喵爱吃卤面',
   memosPageSize: 10, // number
 }
 
@@ -77,10 +80,14 @@ export const categories = [
     href: "/feed/1",
   },
   {
-    name: "随记",
+    name: "Memos",
     iconClass: "ri-quill-pen-line",
-    href: "https://pyq.kemiao.online",
-    target: '_blank',
+    href: "/memos",
+  },
+  {
+    name: "Moment",
+    iconClass: "ri-wechat-line",
+    href: "https://moment.050815.xyz",
   },
   {
     name: "相册",
