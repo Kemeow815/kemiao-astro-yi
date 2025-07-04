@@ -85,17 +85,6 @@ export const categories = [
     href: "/memos",
   },
   {
-    name: "Moment",
-    iconClass: "ri-wechat-line",
-    href: "https://moment.050815.xyz",
-  },
-  {
-    name: "相册",
-    iconClass: "ri-image-fill",
-    href: "https://photos.050815.xyz",
-    target: '_blank',
-  },
-  {
     name: "归档",
     iconClass: "ri-archive-line",
     href: "/archive/1",
@@ -126,6 +115,49 @@ export const categories = [
         href: '/friends',
         target: '_self',
       },
+      {
+        name: "Moment",
+        iconClass: "ri-wechat-line",
+        href: "https://moment.050815.xyz",
+        target: '_blank',
+        // target: '_self',
+      },
+      {
+        name: "相册",
+        iconClass: "ri-image-fill",
+        href: "https://photos.050815.xyz",
+        target: '_self',
+      },
+      {
+        name: "Ech0",
+        iconClass: "ri-file-marked-line",
+        href: "https://pyq.050815.xyz",
+        target: '_blank',
+      },
+      {
+        name: "iceFox",
+        iconClass: "ri-quill-pen-ai-line",
+        href: "https://pyq.kemiao.online",
+        target: '_blank',
+      },
+      {
+        name: "TG说说",
+        iconClass: "ri-book-marked-fill",
+        href: "https://shuoshuo.kemiao.online",
+        target: '_blank',
+      },
+      {
+        name: "音乐",
+        iconClass: "ri-music-line",
+        href: "https://music.kemiao.online",
+        target: '_blank',
+      },
+      {
+        name: "News",
+        iconClass: "ri-newspaper-fill",
+        href: "https://news.kemiao.online",
+        target: '_blank',
+      }
     ]
   }
 ]
